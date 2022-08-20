@@ -79,6 +79,7 @@ class ExtractorGenerator(nn.Module):
     def forward(self, src, tgt, copy_mask, segment_id):
         src_mask = (src != 0).unsqueeze(-2).long()
         tgt_mask = (tgt != 0).unsqueeze(-2).long()
+        tgt_mask = tgt_mask & subsequent_mask(tgt.size(-1)).type_as(tgt_mask.data).to(src_mask.device)
         src_pos = torch.arange(src.size(-1)).unsqueeze(0).to(src.device)
         src_emb, tgt_emb = self.embedding(src, src_pos, segment_id), self.embedding(tgt)
         src_output, tgt_output = self.layer_wise_encoder_decoder(src_emb, src_mask, tgt_emb, tgt_mask)

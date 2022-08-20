@@ -107,7 +107,7 @@ def extractor_generator_train_epoch(model, dataloader, optimizer, loss_func, epo
     model.train()
     pbar = tqdm(dataloader)
     pbar.set_description('Training Epoch {}'.format(epoch_id))
-    for src_input, tgt_input, extractor_target, generator_target, copy_masks, seg_ment_ids, index in dataloader:
+    for src_input, tgt_input, extractor_target, generator_target, copy_masks, seg_ment_ids, index in pbar:
         src_input, tgt_input, extractor_target, generator_target, copy_masks, seg_ment_ids, index = \
             src_input.to(device), tgt_input.to(device), extractor_target.to(device), generator_target.to(device), copy_masks.to(device), seg_ment_ids.to(device), index.to(device)
         model.zero_grad()

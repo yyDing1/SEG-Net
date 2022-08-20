@@ -1,4 +1,4 @@
-The implement of of [SEG-Net](https://arxiv.org/pdf/2008.01739.pdf)
+The implementation of of [SEG-Net](https://arxiv.org/pdf/2008.01739.pdf)
 
 ## quick start
 
